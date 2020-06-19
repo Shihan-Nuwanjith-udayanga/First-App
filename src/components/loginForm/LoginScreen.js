@@ -7,7 +7,21 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 
 export default class LoginScreen extends Component {
-    
+    state = {
+        userName: '',
+        password: ''
+    } 
+
+    showAlert() {
+        Alert.alert(this.state.userName + " " + this.state.password)
+    }
+    validation() {
+        if (this.state.userName == "shihan" && this.state.password == "123") {
+            this.props.navigation.navigate('CustomerScreen')
+        } else {
+            Alert.alert("user name or password incorrect!")
+        }
+    }
     render() {
         return (
             <ScrollView>
@@ -21,7 +35,7 @@ export default class LoginScreen extends Component {
                         <TextInput
                             placeholder="Username"
                             onChangeText={text => this.setState({ userName: text })}
-                           
+                            value={this.state.userName}
                         />
                     </Item>
                     <Item style={styles.item1}>
@@ -31,11 +45,12 @@ export default class LoginScreen extends Component {
                             secureTextEntry={true}
                             placeholder="Password"
                             onChangeText={text => this.setState({ password: text })}
-                            
+                            value={this.state.password}
                         />
                     </Item>
                     <Text style={styles.fogot}>forgot your pssword?</Text>
-                    <TouchableOpacity style={styles.Button}>
+                    <TouchableOpacity style={styles.Button}
+                    onPress={() => this.validation()}>
                         <Text style={styles.Text}>
                             Login
                             </Text>
