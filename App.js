@@ -13,12 +13,18 @@ import { createStackNavigator, Header } from 'react-navigation-stack';
 
 
 import LoginScreen from './src/components/loginForm/LoginScreen';
+import CustomerScreen from './src/components/customerForm/CustomerScreen';
 
 
 const RootStack = createStackNavigator({
 
   LoginScreen: {
     screen: LoginScreen,
+    navigationOptions: { header: null }
+  },
+
+  CustomerScreen: {
+    screen: CustomerScreen,
     navigationOptions: { header: null }
   }
 
