@@ -5,8 +5,50 @@ import ImagePicker from 'react-native-image-picker';
 import { ScrollView } from 'react-native-gesture-handler';
 import styles from '../customerForm/CustomerScreenStyle'
 
+const options = {
+  title: 'Choose Photo',
+  takePhotoButtonTitle: 'Take photo with your camera',
+  chooseFromlLibraryTitle: 'choose photo from library'
+}
 
 export default class CustomerForm extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      Name: '',
+      Address: '',
+      Contact: '',
+      Nic: '',
+      avatarSource: null,
+      pic: null
+    }
+  }
+
+  myPhoto = () => {
+    // alert('clicked');
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('Image Picker Error: ', response.error);
+      }
+
+      else {
+        let source = { uri: response.uri };
+
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        this.setState({
+          avatarSource: source
+        });
+      }
+    });
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -14,13 +56,13 @@ export default class CustomerForm extends Component {
       <ScrollView>
         <View style={styles.View}>
           <Image style={styles.img} source={require('../../assest/b1.png')}></Image>
-          <TouchableOpacity style={styles.backArrow} >
+          <TouchableOpacity style={styles.backArrow} onPress={() => this.props.navigation.navigate('LoginScreen')} >
             <Image source={require('../../assest/b2.png')}></Image>
           </TouchableOpacity>
         </View>
         <Text style={styles.text}>Signup</Text>
-        <Image style={styles.Image}></Image>
-        <TouchableOpacity  style={styles.camera}>
+        <Image style={styles.Image} source={this.state.avatarSource}></Image>
+        <TouchableOpacity onPress={this.myPhoto} style={styles.camera}>
           <View style={styles.cameraView}>
             <Image source={require('../../assest/b3.png')} style={{ left: 10, top: 10 }}></Image>
           </View>
