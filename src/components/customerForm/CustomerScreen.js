@@ -50,6 +50,45 @@ export default class CustomerForm extends Component {
     });
   }
 
+  validation() {
+    if (this.namevalidate(this.state.Name) && this.namevalidate(this.state.Address) && this.mobilevalidate(this.state.Contact) && this.nicvalidatate(this.state.Nic)) {
+      // this.props.navigation.navigate('CustomerDetails')
+      // this.props.navigation.navigate('cusDetails')
+      this.saveData()
+    } else {
+      Alert.alert("user validation Invalid")
+    }
+
+  }
+  //Mobile Validate
+  mobilevalidate(text) {
+    const reg = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$/;
+    if (reg.test(text) === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  //NIC validator
+  nicvalidatate(text) {
+    const reg = /^([0-9]{9}[x|X|v|V]|[0-9]{12})$/
+    if (reg.test(text) === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  namevalidate(text) {
+    const reg = /^[a-zA-Z ]*$/;
+    if (reg.test(text) === false) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -72,7 +111,7 @@ export default class CustomerForm extends Component {
           <TextInput
             placeholder="Name"
             onChangeText={text => this.setState({ Name: text })}
-            //value={this.state.Name}
+            value={this.state.Name}
           />
         </Item>
         <Item style={styles.item1}>
@@ -80,7 +119,7 @@ export default class CustomerForm extends Component {
           <TextInput
             placeholder="Address"
             onChangeText={text => this.setState({ Address: text })}
-            //value={this.state.Address}
+            value={this.state.Address}
           />
         </Item>
         <Item style={styles.item2}>
@@ -88,7 +127,7 @@ export default class CustomerForm extends Component {
           <TextInput
             placeholder="Contact"
             onChangeText={text => this.setState({ Contact: text })}
-            //value={this.state.Contact}
+            value={this.state.Contact}
             keyboardType="numeric"
           />
         </Item>
@@ -97,10 +136,10 @@ export default class CustomerForm extends Component {
           <TextInput
             placeholder="Nic"
             onChangeText={text => this.setState({ Nic: text })}
-           // value={this.state.Nic}
+            value={this.state.Nic}
           />
         </Item>
-        <Button block style={styles.button} >
+        <Button block style={styles.button} onPress={() => this.validation()}>
           <Text style={{ fontWeight: "bold" }}>submit</Text>
         </Button>
       </ScrollView>
