@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View, Image, TextInput, Button, TouchableOp
 import { Card, Left, Item } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 import styles from '../loginForm/LoginScreenStyle'
-import RegisterScreen from '../registerForm/RegisterScreen';
+
 
 
 

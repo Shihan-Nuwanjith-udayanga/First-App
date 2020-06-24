@@ -37,7 +37,7 @@ const RootStack = createStackNavigator({
 },
 
   {
-    initialRouteName: 'RegisterScreen',
+    initialRouteName: 'LoginScreen',
 
 
   },
