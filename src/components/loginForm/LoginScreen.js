@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text, View, Image, TextInput, Button, TouchableOp
 import { Card, Left, Item } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 import styles from '../loginForm/LoginScreenStyle'
+import RegisterScreen from '../registerForm/RegisterScreen';
 
 
 
@@ -54,6 +55,9 @@ export default class LoginScreen extends Component {
                         <Text style={styles.Text}>
                             Login
                             </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.dont} onPress={()=>this.props.navigation.navigate('RegisterScreen')}>
+                        <Text style={styles.last}>Dont't have Account ? Register</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

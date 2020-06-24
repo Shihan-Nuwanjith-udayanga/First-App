@@ -102,6 +102,20 @@ export default StyleSheet.create({
         top:150,
         color:"#7F8994",
         left:65
+    },
+
+    dont: {
+        bottom:0,
+        position:'absolute',
+        width:wp("100%"),
+        backgroundColor:'#EEEEEE',
+        height:30,
+        alignItems:'center',
+        justifyContent:'center'
+    },
+
+    last:{
+        color:'#737273'
     }
 
 }); 
