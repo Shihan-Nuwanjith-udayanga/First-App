@@ -18,13 +18,14 @@ import RegisterScreen from './src/components/registerForm/RegisterScreen';
 
 
 const RootStack = createStackNavigator({
-
+  
   LoginScreen: {
     screen: LoginScreen,
     navigationOptions: { header: null }
   },
 
   CustomerScreen: {
+
     screen: CustomerScreen,
     navigationOptions: { header: null }
   },

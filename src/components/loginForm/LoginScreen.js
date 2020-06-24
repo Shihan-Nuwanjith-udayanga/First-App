@@ -8,16 +8,28 @@ import styles from '../loginForm/LoginScreenStyle'
 
 
 export default class LoginScreen extends Component {
+
+    constructor() {
+        super();
+    
+        this.state = { hidePassword: true }
+      }
+    
+      setPasswordVisibility = () => {
+        this.setState({ hidePassword: !this.state.hidePassword });
+      }
+    
     state = {
-        userName: '',
-        password: ''
+        hidePassword:' ',
+        userName: ' ',
+        password: ' '
     } 
 
     showAlert() {
         Alert.alert(this.state.userName + " " + this.state.password)
     }
     validation() {
-        if (this.state.userName == "shihan" && this.state.password == "123") {
+        if (this.state.userName == "Shihan" && this.state.password == "123") {
             this.props.navigation.navigate('CustomerScreen')
         } else {
             Alert.alert("user name or password incorrect!")
@@ -41,9 +53,13 @@ export default class LoginScreen extends Component {
                     </Item>
                     <Item style={styles.item1}>
                         <Image style={styles.a2img} source={require('../../assest/a2.png')}></Image>
-                        <Image style={styles.a3img} source={require('../../assest/a3.png')}></Image>
+                        <TouchableOpacity activeOpacity={0.8} style={styles.touachableButton} onPress={this.setPasswordVisibility}>
+                            <Image source={(this.state.hidePassword) ? require('../../assest/a3.png') : require('../../assest/a4.png')}
+                            style={styles.buttonImage}
+                            ></Image>
+                        </TouchableOpacity>
                         <TextInput
-                            secureTextEntry={true}
+                            secureTextEntry={this.state.hidePassword}
                             placeholder="Password"
                             onChangeText={text => this.setState({ password: text })}
                             value={this.state.password}
@@ -51,7 +67,7 @@ export default class LoginScreen extends Component {
                     </Item>
                     <Text style={styles.fogot}>forgot your pssword?</Text>
                     <TouchableOpacity style={styles.Button}
-                    onPress={() => this.validation()}>
+                        onPress={() => this.validation()}>
                         <Text style={styles.Text}>
                             Login
                             </Text>

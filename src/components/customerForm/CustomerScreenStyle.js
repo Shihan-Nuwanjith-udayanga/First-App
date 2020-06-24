@@ -25,10 +25,9 @@ export default StyleSheet.create({
       text: {
         position: "absolute",
         right: 30,
-        top: 1e0,
-        fontSize: 50,
-        fontWeight: "bold",
-        color: "white"
+        top: 10,
+        fontSize: 30,
+        color: "#FFFFFF"
       },
       form: {
         position: "absolute",

@@ -73,13 +73,7 @@ export default StyleSheet.create({
         width: 20,
         height: 20
     },
-    a3img: {
-        position: "absolute",
-        right: 20,
-        top: 15,
-        width: 25,
-        height: 25
-    },
+   
     item2:{
         position: "absolute",
         top: 410,
@@ -120,6 +114,27 @@ export default StyleSheet.create({
 
     last:{
         color:'#737273'
+    },
+
+    backArrow:{
+        position:"absolute",
+        top:10,
+        left:20
+    },
+
+    touachableButton: {
+        position: 'absolute',
+        right: 18,
+        height: 30,
+        width: 30,
+        padding: 2
+      },
+
+    buttonImage: {
+        resizeMode: 'contain',
+        height: '100%',
+        width: '100%',
     }
+  
 
 }); 

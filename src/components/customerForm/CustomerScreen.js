@@ -96,10 +96,10 @@ export default class CustomerForm extends Component {
         <View style={styles.View}>
           <Image style={styles.img} source={require('../../assest/b1.png')}></Image>
           <TouchableOpacity style={styles.backArrow} onPress={() => this.props.navigation.navigate('LoginScreen')} >
-            <Image source={require('../../assest/b2.png')}></Image>
+            <Image source={require('../../assest/b2.png')}style={{top:10}}></Image>
           </TouchableOpacity>
         </View>
-        <Text style={styles.text}>Signup</Text>
+        <Text style={styles.text}>Profile</Text>
         <Image style={styles.Image} source={this.state.avatarSource}></Image>
         <TouchableOpacity onPress={this.myPhoto} style={styles.camera}>
           <View style={styles.cameraView}>
