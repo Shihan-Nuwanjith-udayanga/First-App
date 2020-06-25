@@ -25,6 +25,29 @@ export default class CustomerForm extends Component {
     }
   }
 
+  saveData() {
+    let obj = {
+      name: this.state.Name,
+      address: this.state.Address,
+      contact: this.state.Contact,
+      nic: this.state.Nic,
+    }
+    AsyncStorage.setItem('user', JSON.stringify(obj));
+    //this.props.navigation.navigate('CustomerDetailsScreen')
+    this.displayData();
+
+  }
+
+  displayData = async ()=>{  
+    try{  
+      let user = await AsyncStorage.getItem('user');  
+      alert(user);  
+    }  
+    catch(error){  
+      alert(error)  
+    }  
+  }  
+
   myPhoto = () => {
     // alert('clicked');
     ImagePicker.showImagePicker(options, (response) => {
@@ -52,8 +75,7 @@ export default class CustomerForm extends Component {
 
   validation() {
     if (this.namevalidate(this.state.Name) && this.namevalidate(this.state.Address) && this.mobilevalidate(this.state.Contact) && this.nicvalidatate(this.state.Nic)) {
-      // this.props.navigation.navigate('CustomerDetails')
-      // this.props.navigation.navigate('cusDetails')
+       //this.props.navigation.navigate('CustomerDetailsScreem')
       this.saveData()
     } else {
       Alert.alert("user validation Invalid")
@@ -90,7 +112,7 @@ export default class CustomerForm extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation; 
     return (
       <ScrollView>
         <View style={styles.View}>
