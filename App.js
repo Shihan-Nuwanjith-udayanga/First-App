@@ -15,7 +15,7 @@ import { createStackNavigator, Header } from 'react-navigation-stack';
 import LoginScreen from './src/components/loginForm/LoginScreen';
 import CustomerScreen from './src/components/customerForm/CustomerScreen';
 import RegisterScreen from './src/components/registerForm/RegisterScreen';
-import CustomerDetailsScreen from './src/components/customerDetails/CustomerDetailsScreen';
+//import CustomerDetailsScreen from './src/components/customerDetails/CustomerDetailsScreen';
 
 const RootStack = createStackNavigator({
   
@@ -35,15 +35,15 @@ const RootStack = createStackNavigator({
     navigationOptions:{header: null}
   },
 
-  CustomerDetailsScreen:{
-    screen: CustomerDetailsScreen,
-    navigationOptions:{header: null}
-  }
+  // CustomerDetailsScreen:{
+  //   screen: CustomerDetailsScreen,
+  //   navigationOptions:{header: null}
+  // }
 
 },
 
   {
-    initialRouteName: 'CustomerScreen',
+    initialRouteName: 'LoginScreen',
 
 
   },
